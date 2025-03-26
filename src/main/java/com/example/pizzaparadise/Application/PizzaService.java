@@ -1,23 +1,27 @@
 package com.example.pizzaparadise.Application;
 
 import com.example.pizzaparadise.Domain.Pizza;
+import com.example.pizzaparadise.InfraStructure.PizzaRepository;
 
 import java.util.List;
 
 public class PizzaService implements PizzaServiceInt {
 
-    public PizzaService() {}
+    private PizzaRepository pizzaRepo;
 
-    public Pizza createPizza(Pizza pizza){
-
+    public PizzaService(PizzaRepository pizzaRepo) {
+        this.pizzaRepo = pizzaRepo;
     }
 
-    List<Pizza> showPizzaMenu();
+    public Pizza createPizza(Pizza pizza){
+        return pizzaRepo.savePizza(pizza);
+    }
 
-    void updatePizza(Pizza pizza);
+    public List<Pizza> showPizzaMenu(){
+        return pizzaRepo.getPizzas();
+    }
 
-
-
-
-
+    public void updatePizza(Pizza pizza){
+        pizzaRepo.updatePizza(pizza);
+    }
 }

@@ -30,7 +30,7 @@ public class PizzaRepository implements PizzaRepoInt{
         return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Pizza.class));
     }
 
-    public void update(Pizza pizza){
+    public void updatePizza(Pizza pizza){
         String sql = "UPDATE pizza SET name = ?, description = ?, toppings = ? WHERE name = ?";
         jdbcTemplate.update(sql, pizza.getName(), pizza.getDescription(), pizza.getName(), pizza.getName());
     }
