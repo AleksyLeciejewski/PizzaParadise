@@ -1,6 +1,7 @@
 package com.example.pizzaparadise.InfraStructure;
 
 import com.example.pizzaparadise.Domain.Pizza;
+import com.example.pizzaparadise.Domain.Toppings;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
@@ -15,8 +16,15 @@ public class PizzaRepository implements PizzaRepoInt{
     }
 
     public Pizza savePizza(Pizza pizza){
-        String sql = "INSERT INTO pizza (name, description, toppings, price) VALUES (?,?,?,?)";
-        jdbcTemplate.update(sql, pizza.getDescription(),pizza.getName(), pizza.getPrice(), pizza.getTopping());
+        String sql = "INSERT INTO pizza (name, description, price) VALUES (?,?,?)";
+        jdbcTemplate.update(sql, pizza.getDescription(),pizza.getName(), pizza.getPrice());
+
+        int pizzaId = jdbcTemplate.queryForObject("SELECT LAST_INSERT_ID()", Integer.class);
+
+        for(Toppings toppings : pizza.getToppings()){
+            addToppingToPizza(pizzaId, toppings);
+        }
+
         return pizza;
     }
 
@@ -38,5 +46,15 @@ public class PizzaRepository implements PizzaRepoInt{
     public void deletePizza(String name){
         String sql = "DELETE FROM pizza WHERE name = ?";
         jdbcTemplate.update(sql, name);
+    }
+
+    public void addToppingToPizza(int pizzaId, Toppings topping) {
+        String sql = "INSERT INTO pizza_toppings (pizza_id, topping_id) VALUES (?, ?)";
+        jdbcTemplate.update(sql, pizzaId, topping.getId()); 
+    }
+
+    public void removeToppingFromPizza(int pizzaId, Toppings topping) {
+        String sql = "DELETE FROM pizza_toppings WHERE pizza_id = ? AND topping_id = ?";
+        jdbcTemplate.update(sql, pizzaId, topping.getId());
     }
 }

@@ -13,7 +13,7 @@ public class DatabaseConfig {
         public DataSource dataSource() {
             DriverManagerDataSource ds = new DriverManagerDataSource();
             ds.setDriverClassName("com.mysql.cj.jdbc.Driver");
-            ds.setUrl("jdbc:mysql://localhost:3306/dictators_db");
+            ds.setUrl("jdbc:mysql://localhost:3306/PizzaParadise");
             ds.setUsername("root");
             ds.setPassword("root");
             return ds;

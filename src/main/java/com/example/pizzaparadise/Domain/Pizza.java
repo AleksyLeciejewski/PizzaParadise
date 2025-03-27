@@ -1,23 +1,30 @@
 package com.example.pizzaparadise.Domain;
 
+import java.util.List;
+
 public class Pizza {
 
+    private int id;
     private String name;
     private String description;
-    private String topping;
+    private List<Toppings> topping;
     private int price;
 
-    public Pizza( String name, String description, String topping, int price) {
+    public Pizza( String name, String description, List<Toppings> topping, int price) {
         this.name = name;
         this.description = description;
         this.topping = topping;
         this.price = price;
     }
 
-    public Pizza(){
+    public Pizza(){}
 
+    public List<Toppings> getToppings() {
+        return topping;
     }
-
+    public void setToppings(List<Toppings> toppings) {
+        this.topping = toppings;
+    }
 
     public String getName() {
         return name;
@@ -35,19 +42,19 @@ public class Pizza {
         this.description = description;
     }
 
-    public String getTopping() {
-        return topping;
-    }
-
-    public void setTopping(String topping) {
-        this.topping = topping;
-    }
-
     public int getPrice() {
         return price;
     }
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
