@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface PizzaServiceInt {
 
-    Pizza createPizza(Pizza pizza);
+    Pizza createPizza(String name, String description, int price, List<Integer> toppingIds);
 
     List<Pizza> showPizzaMenu();
 

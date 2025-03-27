@@ -10,7 +10,7 @@ public class Pizza {
     private List<Toppings> topping;
     private int price;
 
-    public Pizza( String name, String description, List<Toppings> topping, int price) {
+    public Pizza(String name, String description, int price, List<Toppings> topping) {
         this.name = name;
         this.description = description;
         this.topping = topping;

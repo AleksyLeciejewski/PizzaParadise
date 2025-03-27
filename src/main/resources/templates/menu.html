@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Pizza Paradise - Menu</title>
+</head>
+<body>
+<h1>Pizza Menu</h1>
+
+<div>
+    <ul>
+        <li th:each="pizza : ${pizzas}">
+            <h2 th:text="${pizza.name}">Pizza Name</h2>
+            <p th:text="${pizza.description}">Pizza Description</p>
+            <p th:text="'Price: ' + ${pizza.price}">Pizza Price</p>
+
+            <form th:action="@{/pizza/addTopping}" method="post">
+                <input type="hidden" name="pizzaId" th:value="${pizza.id}" />
+                <select name="toppingId">
+                    <option th:each="topping : ${toppings}" th:value="${topping.id}" th:text="${topping.name}"></option>
+                </select>
+                <button type="submit">Add Topping</button>
+            </form>
+        </li>
+    </ul>
+</div>
+</body>
+</html>
