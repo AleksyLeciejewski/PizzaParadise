@@ -1,3 +1,4 @@
+
 package com.example.pizzaparadise.Application;
 
 import com.example.pizzaparadise.Domain.Pizza;
@@ -25,3 +26,4 @@ public class PizzaService implements PizzaServiceInt {
         pizzaRepo.updatePizza(pizza);
     }
 }
+

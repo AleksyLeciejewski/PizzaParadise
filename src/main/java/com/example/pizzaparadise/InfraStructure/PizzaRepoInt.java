@@ -1,3 +1,4 @@
+
 package com.example.pizzaparadise.InfraStructure;
 
 import com.example.pizzaparadise.Domain.Pizza;
@@ -12,3 +13,5 @@ public interface PizzaRepoInt {
     void updatePizza(Pizza pizza);
     void deletePizza(String name);
 }
+
+

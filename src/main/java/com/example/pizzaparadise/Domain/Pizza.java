@@ -1,3 +1,4 @@
+
 package com.example.pizzaparadise.Domain;
 
 public class Pizza {
@@ -51,3 +52,5 @@ public class Pizza {
         this.price = price;
     }
 }
+
+

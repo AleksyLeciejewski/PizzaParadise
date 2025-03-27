@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profil</title>
+</head>
+<body>
+<h1>Velkommen ${username}</h1>
+
+<h2>dine tidligere ordrer</h2>
+<ul>
+  <li th:each="order : ${orders}">
+    Pizza: <b>${order.pizza_name}</b>
+    Dato: <b>${order.date}</b>
+  </li>
+</ul>
+
+<h3>Totale bonuspoint: <span th:text="${bonuspoints}"></span></h3>
+
+<a href="/">Log ud</a>
+</body>
+</html>
