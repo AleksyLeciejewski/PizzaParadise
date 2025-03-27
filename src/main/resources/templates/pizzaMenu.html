@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<h1>Pizza Menu</h1>
+<ul>
+  <li th:each="pizza : ${pizzas}">
+    <h2 th:text="${pizza.name}"></h2>
+    <p><b>Description:</b> <span th:text="${pizza.description}"></span></p>
+    <p><b>Toppings:</b> <span th:text="${pizza.topping}"></span></p>
+    <p><b>Price:</b> <span th:text="${pizza.price}"></span> DKK</p>
+  </li>
+</ul>
+</html>
