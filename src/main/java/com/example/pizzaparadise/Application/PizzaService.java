@@ -35,10 +35,6 @@ public class PizzaService implements PizzaServiceInt, ToppingHandler {
         return pizzaRepo.getPizzas();
     }
 
-//    public Pizza getPizzaById(int id){
-//        //SKAL IMPLEMENTERES
-//    }
-
     public void updatePizza(Pizza pizza){
         pizzaRepo.updatePizza(pizza);
     }
