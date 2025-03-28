@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Pizza Paradise - Hjem</title>
+</head>
+<body>
+<h1>Velkommen til Pizza Paradise</h1>
+
+<div>
+    <a th:href="@{/pizza/create}">
+        <button>Lav din egen pizza!</button>
+    </a>
+    <a th:href="@{/pizza/menu}">
+        <button>Vis Pizza Menu</button>
+    </a>
+</div>
+</body>
+</html>
