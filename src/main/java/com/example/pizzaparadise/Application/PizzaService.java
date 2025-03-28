@@ -16,8 +16,9 @@ public class PizzaService implements PizzaServiceInt, ToppingHandler {
     private PizzaRepository pizzaRepo;
     private ToppingRepo toppingRepo;
 
-    public PizzaService(PizzaRepository pizzaRepo) {
+    public PizzaService(PizzaRepository pizzaRepo, ToppingRepo toppingRepo) {
         this.pizzaRepo = pizzaRepo;
+        this.toppingRepo = toppingRepo;
     }
 
     public Pizza createPizza(String name, String description, int price, List<Integer> toppingIds) {

@@ -21,20 +21,18 @@ public class PizzaRepository implements PizzaRepoInt{
 
     public Pizza savePizza(Pizza pizza) {
         String sql = "INSERT INTO pizza (name, description, price) VALUES (?,?,?)";
-        jdbcTemplate.update(sql, pizza.getDescription(), pizza.getName(), pizza.getPrice());
-
+        jdbcTemplate.update(sql, pizza.getName(), pizza.getDescription(), pizza.getPrice());
         int pizzaId = jdbcTemplate.queryForObject("SELECT LAST_INSERT_ID()", Integer.class);
 
         for (Toppings topping : pizza.getToppings()) {
             addToppingToPizza(pizzaId, topping);
         }
-
         return pizza;
     }
 
     public Pizza getPizzaByName(String name){
         String sql = "SELECT * FROM pizza WHERE name = ?";
-        return jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(Pizza.class));
+        return jdbcTemplate.queryForObject(sql, new Object[]{name}, new BeanPropertyRowMapper<>(Pizza.class));
     }
 
     public List<Pizza> getPizzas() {
@@ -47,8 +45,8 @@ public class PizzaRepository implements PizzaRepoInt{
     }
 
     public void updatePizza(Pizza pizza){
-        String sql = "UPDATE pizza SET name = ?, description = ?, toppings = ? WHERE name = ?";
-        jdbcTemplate.update(sql, pizza.getName(), pizza.getDescription(), pizza.getName(), pizza.getName());
+        String sql = "UPDATE pizza SET name = ?, description = ?, price = ? WHERE id = ?";
+        jdbcTemplate.update(sql, pizza.getName(), pizza.getDescription(), pizza.getPrice(), pizza.getId());
     }
 
     public void deletePizza(String name){

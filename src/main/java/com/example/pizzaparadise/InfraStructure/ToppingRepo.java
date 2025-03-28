@@ -17,9 +17,8 @@ public class ToppingRepo {
     }
 
     public List<Toppings> getToppingsByIds(List<Integer> toppingIds) {
-        String sql = "SELECT * FROM toppings WHERE id IN (?)";
-        String ids = String.join(",", toppingIds.stream().map(String::valueOf).toArray(String[]::new));
-        return jdbcTemplate.query(sql.replace("?", ids), new BeanPropertyRowMapper<>(Toppings.class));
+        String sql = "SELECT * FROM toppings WHERE id IN (" +
+                String.join(",", toppingIds.stream().map(id -> "?").toArray(String[]::new)) + ")";
+        return jdbcTemplate.query(sql, toppingIds.toArray(), new BeanPropertyRowMapper<>(Toppings.class));
     }
-
 }
