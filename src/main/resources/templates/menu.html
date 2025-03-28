@@ -14,7 +14,7 @@
             <p th:text="${pizza.description}">Pizza Description</p>
             <p th:text="'Price: ' + ${pizza.price}">Pizza Price</p>
 
-            <form th:action="@{/pizza/addTopping}" method="post">
+            <form th:action="@{/addTopping}" method="post">
                 <input type="hidden" name="pizzaId" th:value="${pizza.id}" />
                 <select name="toppingId">
                     <option th:each="topping : ${toppings}" th:value="${topping.id}" th:text="${topping.name}"></option>
