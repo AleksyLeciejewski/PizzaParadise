@@ -26,7 +26,9 @@ public class PizzaController {
     @GetMapping("/menu")
     public String getPizzaMenu(Model model) {
         List<Pizza> pizzas = pizzaService.showPizzaMenu();
+        List<Toppings> toppings = pizzaService.getAllToppings();
         model.addAttribute("pizzas", pizzas);
+        model.addAttribute("toppings", toppings);
         return "menu";
     }
 
