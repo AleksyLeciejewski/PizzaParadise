@@ -12,7 +12,7 @@ import java.util.List;
 
 @Controller
 
-@RequestMapping("/pizza")
+
 public class PizzaController {
 
     private final PizzaService pizzaService;
@@ -50,7 +50,7 @@ public class PizzaController {
         Pizza pizza = new Pizza(name, description, price, toppings);
         pizzaService.createCustomPizza(pizza);
 
-        return "redirect:/pizza/menu";
+        return "redirect:/menu";
     }
 
     @GetMapping("/view/{id}")
@@ -65,6 +65,6 @@ public class PizzaController {
         Pizza pizza = pizzaService.getPizzaById(pizzaId);
         Toppings topping = pizzaService.getToppingById(toppingId);
         toppingHandler.addTopping(pizza, topping);
-        return "redirect:/pizza/menu";
+        return "redirect:/menu";
     }
 }
